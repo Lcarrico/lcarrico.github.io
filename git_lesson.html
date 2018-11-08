@@ -1,0 +1,238 @@
+<html>
+	<head>
+	<style>
+		pre {
+			font-family: Arial;
+		}
+		
+		.code {
+			font-family: "Times New Roman", Times, serif;
+		}
+	</style>
+	
+	<head>
+	<body>
+	<h3>
+	Lesson 1 - Install Git and make a Github Account!
+	</h3>
+
+	<pre>
+<a href="http://github.com"> http://github.com </a>
+If you don't already have an account, go through the sign up.
+
+Otherwise, please login. 
+
+
+<a href="https://git-scm.com/downloads"> https://git-scm.com/downloads </a>
+
+Click your OS for the proper download file.
+
+Make sure to check
+	-Windows Explorer Integration
+		-Git Bash Here
+		-Git GUI Here
+	-Git LFS (Large File Support)
+	-Associate .git* w/ text editor
+	-Associate .sh file with Bash
+	
+For "Which editor would you like Git to Use?"
+	Make sure to select "Use the Nano editor by default"
+
+Select "Use Git from the Windows Command Prompt"
+
+Use the OpenSSL Library
+
+Use MinTTY
+
+Make sure Enable file system caching is checked
+
+Make sure Enable Git Credential Manager is checked
+
+
+Short exercises!
+
+	(Hint: if you don't know what command checks version, try running git help
+	Check for git version on Powershell, Command Prompt, Git Bash
+	
+	(Hint: Try right clicking your desktop)
+	Open Git Bash in desktop
+	
+
+</pre>
+
+<h3>
+Lesson 1.2 - Add Global Configuration Files!
+</h3>
+
+<pre>
+Run the following commands:
+	git config --global user.name "Your Name"
+	git config --global user.email your.email@example.com
+	
+Short excersises 
+
+	(Hint: try the previous command without your name or email included)
+	Check to see if your name and email were properly configured.
+	
+</pre>
+
+<h3>
+Lesson 2 - Initialize Git!
+</h3>
+
+<pre>
+Create a Project folder in your computer.
+
+Add an empty text document to that folder. It can be named anything you want. //Make sure you do this
+
+Open either CMD, Powershell, or Git Bash within your project folder. 
+	If you're using CMD or Powershell make sure you understand the following commands:
+		dir //Lists of folders in your current space
+		cd "folder name" //Moves you to that folder
+		cd .. //moves you up a folder
+	
+
+In your terminal of choice, initialize git in the project folder you're in.
+
+Use the command:
+	git init
+	
+<pre>
+	
+	
+<h3>
+Lesson 3 - Add your files to your git repository!
+</h3>
+
+<pre>
+Run the command:
+	git status
+	
+You should see that the file that we have created in our project folder is considered "untracked". 
+This means that git is not current keeping track or updates on that file. 
+If we want to track the file we would have to run the git add command.
+
+Run the command:
+	git add "InsertFilenameHere.txt"
+	
+	This adds the specific file to the git repository
+
+The other command you can run is:
+	git add "*"
+	
+	This adds all current untracked files to be tracked by git.
+	
+Run the command:
+	git status
+	
+It should tell you that changes are ready to be committed. 
+This means that the file has been added to the repository,
+but the current changes to the file has not yet been made.
+
+Run the command 
+	git commit -m "Init Commit"
+	
+The git commit saves or updates the current file to the repository. 
+The -m "Init Commit" save the "Init Commit" as a message to go with the update.
+</pre>
+
+<h3>
+Lesson 4 - Create a new github repository
+</h3>
+
+<pre>
+Go to your github account.
+
+Select new Repository and name it whatever you want.
+
+Got back to your terminal and then add the remote repository with:
+
+git remote add origin place-repository-URL-here
+
+In order to verify the repository we run:
+git remote -v
+
+Finally we run:
+git push origin master
+
+That pushes the repository you have in your computer to github.
+
+Exercise: 
+Try making changes to your text file and then push those changes to github!
+</pre>
+
+<h3>
+Lesson 5 - Clone a repository
+</h3>
+
+<pre>
+Go to the github page of the repository you want to close.
+
+Here's a good one: <a href="https://github.com/Lcarrico/MergeSort"> https://github.com/Lcarrico/MergeSort </a>
+
+Click the clone or download button and copy the HTTP of the repository.
+
+Go back to your terminal set your current directory
+	to where ever you'd like to save the repository
+
+Then run the command:
+git clone insert-the-http-you-got-here
+
+Now go ahead and use your file explorer to explore your new repo.
+</pre>
+
+<h3>
+Lesson 6 - Github Pages
+</h3>
+
+<pre>
+Github has this thing where it lets you host a page with it.
+
+So...... Let's make one.
+
+Head over to GitHub and create a new repository named username.github.io, 
+where username is your username on GitHub.
+example: lcarrico.github.io
+
+Go ahead and clone the new repository you just made
+
+cd into your new repositroy
+
+Create the index.html file inside the that you will be using.
+
+Here's an example:
+<blockquote>
+<pre class="code">
+&lt;html&gt;
+	&lt;head&gt;&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt; Welcome to my site! &lt;/h1&gt;
+	
+		&lt;h3&gt; By Leo Carrico &lt;/h3&gt;
+		
+		&lt;p&gt; I'm just a regular boy living life and doing regular things. &lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</blockquote>
+
+Add and commit this file to the repository and then push it to github with the command:
+git push
+
+Now open your web browser and check out the site that you made! 
+(note: site should url should look like "https://username.github.io.")
+
+
+Go ahead and try to improve your site a bit.
+
+Need help?
+
+Try this:
+<a href="https://www.w3schools.com/html/html_intro.asp">https://www.w3schools.com/html/html_intro.asp</a>
+
+</pre>
+	
+	</body>
+
+
+</html> 
