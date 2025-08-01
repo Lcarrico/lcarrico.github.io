@@ -90,6 +90,19 @@ document.querySelectorAll(".contact-link").forEach((link) => {
   })
 })
 
+// Add hover effects to project cards
+document.querySelectorAll(".project-card").forEach((card) => {
+  card.addEventListener("mouseenter", function () {
+    this.style.transform = "translateY(-5px)"
+    this.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)"
+  })
+
+  card.addEventListener("mouseleave", function () {
+    this.style.transform = "translateY(0)"
+    this.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"
+  })
+})
+
 // Dynamic typing effect for hero subtitle (optional enhancement)
 function typeWriter(element, text, speed = 100) {
   let i = 0

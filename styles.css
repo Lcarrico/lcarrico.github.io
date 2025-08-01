@@ -145,35 +145,42 @@ body {
   animation: fadeInUp 1s ease 0.6s both;
 }
 
+/* General Button Styles */
 .btn {
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
   display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Primary Button */
 .btn-primary {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: var(--primary-color); /* Ensure this is a visible blue */
+  color: white; /* Ensure text is visible */
+  border: none;
 }
 
 .btn-primary:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background-color: var(--secondary-color); /* Slightly darker blue for hover */
+  color: white; /* Keep text visible */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
 }
 
+/* Secondary Button */
 .btn-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
 }
 
 /* Hero Animation */
@@ -672,4 +679,77 @@ section {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* Projects Section */
+.projects {
+  background: var(--surface);
+  padding: 80px 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.project-card .btn {
+  margin-top: 1rem;
+}
+
+/* Projects Footer */
+.projects-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.projects-footer .btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.projects-footer .btn-secondary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition */
+}
+
+.projects-footer .btn-secondary:hover {
+  background-color: var(--secondary-color); /* Match the darker hover effect */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow on hover */
 }
