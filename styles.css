@@ -347,13 +347,13 @@ section {
   position: relative;
 }
 
-.timeline-content li::before {
-  content: "▶";
+/* .timeline-content li::before {
+  content: "▸";
   position: absolute;
   left: 0;
   color: var(--primary-color);
   font-size: 0.8rem;
-}
+} */
 
 /* Skills Section */
 .skills {
@@ -520,6 +520,29 @@ section {
     height: 120px;
     margin-bottom: 1rem; /* Add spacing below the image */
   }
+
+  .timeline::before {
+    display: none; /* Hide the vertical bar on mobile */
+  }
+
+  .timeline-item {
+    padding: 0 !important; /* Remove padding for alignment */
+  }
+
+  .timeline-content {
+    width: 100%; /* Make content span the full width */
+    /* padding: 1.5rem; Add padding for better spacing */
+    text-align: left; /* Align text to the left */
+  }
+
+  .timeline-item h3 {
+    padding-left: 10px; /* Remove padding for alignment */
+  }
+
+  .timeline-item h4 {
+    padding-left: 10px; /* Remove padding for alignment */
+  }
+
 }
 
 /* Animations */
@@ -608,7 +631,7 @@ section {
   }
 
   .timeline-date {
-    left: 20px;
+    /* left: 20px; */
     transform: translateX(-50%);
   }
 
