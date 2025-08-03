@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Narrative Visualization</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>   was having trouble with this?-->
+  <script src="https://unpkg.com/d3-svg-annotation@2.5.1/d3-annotation.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>YouTube Narrative Visualization</h1>
+</header>
+
+<section class="description">
+  <p>Fame. Fortune. Youtube. 
+    Care to see the stats on the top 100 Youtube channels of 2023 
+    to find out what made them hot... or not.<br/>
+    This narrative visualization dares to shine some light on the fierce competition 
+    Youtubers face to obtain the most subscribers.<br/><br/>
+    Which countries dominate? What genres take charge?
+    And what trends can YOU spot?</p>
+</section>
+
+<main class="viz-container">
+  <div class="nav-controls">
+    <button id="prev">&#8592; Previous</button>
+    <span id="scene-indicator">1 / 4</span>
+    <button id="next">Next &#8594;</button>
+  </div>
+
+  <div class="viz-card">
+    <div class="chart-area">
+      <div class="chart-block">
+        <h2 id="chart-title">Is it Fame? Or is it Grind?</h2>
+        <svg id="chart-main"></svg>
+      </div>
+      <div class="annotation">
+        <h4>Selection Details</h4>
+        <p class="chart-details" id="chart-details">Click on a circle to see details on that channel.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

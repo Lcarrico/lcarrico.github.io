@@ -1,0 +1,121 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #202124;
+  margin: 0;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #FF0000;
+}
+
+.description {
+  padding: 10px 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  color: #444;
+}
+
+.viz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.nav-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.nav-controls button {
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.nav-controls button:hover {
+  background: #d10000;
+  box-shadow: 0 2px 8px rgba(255,0,0,0.15);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+.nav-controls span {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.viz-card {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.chart-area {
+  display: flex;
+  gap: 30px;
+}
+
+.chart-block {
+  flex: 2;
+}
+
+/* the side bar thing was originally going to be my annotation... */
+.annotation { 
+  flex: 1;
+  background: #fff8f8;
+  border-left: 4px solid #FF0000;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.annotation h4 {
+  margin-top: 0;
+  color: #b30000;
+  font-weight: 700;
+}
+
+svg {
+  width: 100%;
+  height: 500px; /* I set this dynamically in the JS, but if I remove this here it bugs the chart annotation locations? */
+}
+
+.annotation-group .annotation-note-title {
+  font-size: 16px; 
+  font-weight: bold;
+  fill: #111;
+}
+
+.annotation-group .annotation-note-label {
+  font-size: 11px; 
+  fill: #444;
+}
+
+.annotation-group .annotation-note-bg {
+  fill: white;
+  opacity: 0.8;
+}
