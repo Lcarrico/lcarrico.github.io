@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xera Text Laugh Converter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #111827 45%, #1f2937);
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      resize: vertical;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      padding: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary {
+      background: #22c55e;
+      color: #052e16;
+    }
+
+    .secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .results {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .score {
+      font-size: clamp(2.4rem, 6vw, 3.5rem);
+      font-weight: 800;
+      margin: 0;
+      color: #86efac;
+    }
+
+    .explanation {
+      margin: 0;
+      color: #e2e8f0;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .legend {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .legend h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .legend ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: #94a3b8;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      .app {
+        padding: 20px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <h1>Xera Text Laugh Converter</h1>
+    <p class="subtitle">
+      Paste a laugh text message and this suspiciously dramatic little calculator will turn it into a numeric laugh intensity score.
+    </p>
+
+    <label for="laughInput">Enter laugh text</label>
+    <textarea id="laughInput" placeholder="Examples: lol, LOL, hahaha, Hahaha, lmaooo, lmfaooo"></textarea>
+
+    <div class="actions">
+      <button class="primary" id="convertBtn">Convert Laugh</button>
+      <button class="secondary" id="sampleBtn">Load Sample</button>
+      <button class="secondary" id="clearBtn">Clear</button>
+    </div>
+
+    <section class="results">
+      <div class="card">
+        <h2>Laugh Score</h2>
+        <p class="score" id="scoreOutput">0</p>
+      </div>
+      <div class="card">
+        <h2>Classification</h2>
+        <p class="explanation" id="classificationOutput">Awaiting chaos.</p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Breakdown</h2>
+      <p class="explanation" id="breakdownOutput">Type something like lmaooo and let the tiny laugh scientist begin.</p>
+    </section>
+
+    <section class="legend">
+      <h3>Scoring Logic</h3>
+      <ul>
+        <li><strong>lol</strong> = 1</li>
+        <li><strong>LOL</strong> = 2 because uppercase adds intensity</li>
+        <li><strong>haha</strong> = 2</li>
+        <li><strong>Hahaha</strong> = 2.5 because sentence case gets a mild boost</li>
+        <li><strong>HAHAHA</strong> = repeated ha count plus 1 for all caps</li>
+        <li><strong>lmao</strong> = 3 and each extra trailing o adds 1</li>
+        <li><strong>lmfao</strong> = 4 and each extra trailing o adds 1</li>
+      </ul>
+      <p class="footer-note">Emoji bonuses removed, just as requested. We are running on pure alphabetic mischief now.</p>
+    </section>
+  </main>
+
+  <script>
+    const laughInput = document.getElementById('laughInput');
+    const scoreOutput = document.getElementById('scoreOutput');
+    const classificationOutput = document.getElementById('classificationOutput');
+    const breakdownOutput = document.getElementById('breakdownOutput');
+    const convertBtn = document.getElementById('convertBtn');
+    const sampleBtn = document.getElementById('sampleBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function isOnlyLetters(text) {
+      return /^[a-zA-Z]+$/.test(text);
+    }
+
+    function isRepeatedHa(lower) {
+      return /^(ha)+$/.test(lower);
+    }
+
+    function countTrailingOs(lower) {
+      const match = lower.match(/o+$/);
+      return match ? match[0].length : 0;
+    }
+
+    function getClassification(score) {
+      if (score <= 0) return 'No laugh detected';
+      if (score < 2) return 'Courtesy chuckle';
+      if (score < 3) return 'Warm little laugh';
+      if (score < 4) return 'Genuine amusement';
+      if (score < 5) return 'Strong laugh';
+      if (score < 6.5) return 'Very strong laugh';
+      return 'Keyboard-smashing delight';
+    }
+
+    function calculateLaughScore(text) {
+      const trimmed = text.trim();
+      const cleaned = trimmed.replace(/[^a-zA-Z]/g, '');
+      const lower = cleaned.toLowerCase();
+
+      if (!trimmed) {
+        return {
+          score: 0,
+          breakdown: 'No input provided. The laboratory is silent.',
+          classification: 'No laugh detected'
+        };
+      }
+
+      if (!cleaned || !isOnlyLetters(cleaned)) {
+        return {
+          score: 0,
+          breakdown: 'Only letter-based laugh text is supported here. Try lol, hahaha, lmaooo, or lmfaooo.',
+          classification: 'No laugh detected'
+        };
+      }
+
+      let score = 0;
+      const notes = [];
+
+      if (lower === 'lol') {
+        score = 1;
+        notes.push('Matched lol base score = 1');
+
+        if (cleaned === cleaned.toUpperCase()) {
+          score += 1;
+          notes.push('All caps detected, added +1 intensity');
+        }
+      } else if (lower.startsWith('lmfao')) {
+        score = 4;
+        notes.push('Matched lmfao base score = 4');
+
+        const trailingOs = countTrailingOs(lower);
+        const extraOs = Math.max(0, trailingOs - 1);
+
+        if (extraOs > 0) {
+          score += extraOs;
+          notes.push(`Added +${extraOs} for extra trailing o's`);
+        }
+      } else if (lower.startsWith('lmao')) {
+        score = 3;
+        notes.push('Matched lmao base score = 3');
+
+        const trailingOs = countTrailingOs(lower);
+        const extraOs = Math.max(0, trailingOs - 1);
+
+        if (extraOs > 0) {
+          score += extraOs;
+          notes.push(`Added +${extraOs} for extra trailing o's`);
+        }
+      } else if (isRepeatedHa(lower)) {
+        const haCount = lower.length / 2;
+        score = haCount;
+        notes.push(`Detected repeated ha pattern with ${haCount} ha pair(s)`);
+
+        if (cleaned === cleaned.toUpperCase()) {
+          score += 1;
+          notes.push('All caps detected, added +1 intensity');
+        } else if (cleaned[0] === cleaned[0].toUpperCase() && cleaned.slice(1) === cleaned.slice(1).toLowerCase()) {
+          score += 0.5;
+          notes.push('Sentence case detected, added +0.5 warmth boost');
+        }
+      } else {
+        notes.push('Input does not match current laugh rules');
+      }
+
+      score = Math.min(score, 10);
+
+      return {
+        score,
+        breakdown: notes.join('\n'),
+        classification: getClassification(score)
+      };
+    }
+
+    function renderResult() {
+      const result = calculateLaughScore(laughInput.value);
+      scoreOutput.textContent = result.score;
+      classificationOutput.textContent = result.classification;
+      breakdownOutput.textContent = result.breakdown;
+    }
+
+    convertBtn.addEventListener('click', renderResult);
+
+    sampleBtn.addEventListener('click', () => {
+      laughInput.value = 'Hahaha';
+      renderResult();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      laughInput.value = '';
+      scoreOutput.textContent = '0';
+      classificationOutput.textContent = 'Awaiting chaos.';
+      breakdownOutput.textContent = 'Type something like lmaooo and let the tiny laugh scientist begin.';
+      laughInput.focus();
+    });
+
+    laughInput.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        renderResult();
+      }
+    });
+  </script>
+</body>
+</html>
